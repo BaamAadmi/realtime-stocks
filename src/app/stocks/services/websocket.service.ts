@@ -23,6 +23,9 @@ export class WebsocketService {
         next: () => {
           this.reconnectAttempts = 0;
         }
+      },
+      closeObserver: {
+        next: () => console.log('WebSocket closed')
       }
     });
 
