@@ -1,16 +1,14 @@
 # Real-Time Stock Tracker
 
-Production-ready Angular 17+ application with WebSocket-based real-time stock price updates using standalone components.
+Angular 17+ application with WebSocket-based real-time stock price updates using Yahoo API.
 
 ## Features
 
 - Real-time stock price updates via WebSocket
-- Support for AAPL, GOOGL, MSFT, TSLA
+- Support for Hardcoded famous stocks like Apple, Google, Microsoft and Tesla.
 - Toggle stocks on/off (max 4 enabled)
 - Responsive design (mobile/desktop)
 - OnPush change detection
-- LocalStorage persistence
-- Two server modes: Mock & Yahoo Finance
 
 ## Tech Stack
 
@@ -20,7 +18,7 @@ Production-ready Angular 17+ application with WebSocket-based real-time stock pr
 - RxJS 7+ with WebSocket
 - Jest for testing
 - ESLint + Prettier
-- Node.js WebSocket server (ws package)
+- Node.js WebSocket server
 
 ## Installation
 
@@ -40,16 +38,9 @@ cd ..
 
 ### 1. Start WebSocket Server
 
-**Mock Mode** (recommended for development):
 ```bash
 cd server
-npm run mock
-```
-
-**Yahoo Mode** (fetches real data):
-```bash
-cd server
-npm run yahoo
+npm start
 ```
 
 ### 2. Start Angular App
@@ -59,25 +50,28 @@ npm start
 
 Navigate to `http://localhost:4200`
 
-## Project Structure
+## Project Structure 
+- This follows the Angular Style Guide and standards we use at SmartStream to group Features separately.
 
 ```
 src/
 ├── app/
-│   ├── core/
+│   ├── stocks/
 │   │   ├── models/
 │   │   │   └── stock.models.ts
 │   │   ├── services/
-│   │   │   └── websocket.service.ts
-│   │   └── utils/
-│   │       └── symbol-utils.ts
-│   ├── stocks/
-│   │   ├── components/
-│   │   │   ├── stock-list/
-│   │   │   └── stock-card/
-│   │   └── services/
-│   │       ├── stocks.service.ts
-│   │       └── stocks-state.service.ts
+│   │   │   ├── stocks.service.ts
+│   │   │   ├── stocks-state.service.ts
+│   │   │   ├── websocket.service.ts
+│   │   │   └── symbol-utils.ts
+│   │   ├── stock-card/
+│   │   │   ├── stock-card.component.ts
+│   │   │   ├── stock-card.component.html
+│   │   │   └── stock-card.component.scss
+│   │   └── stock-list/
+│   │       ├── stock-list.component.ts
+│   │       ├── stock-list.component.html
+│   │       └── stock-list.component.scss
 │   └── app.component.ts
 ├── assets/
 │   └── styles/
@@ -87,8 +81,7 @@ src/
 └── environments/
 
 server/
-├── ws-server-mock.ts
-├── ws-server-yahoo.ts
+├── ws-server.ts
 ├── yahoo-parser.ts
 ├── symbols.ts
 └── types.ts
@@ -146,18 +139,11 @@ npm run lint
 npm run format
 ```
 
-## Server Modes
+## Server
 
-### Mock Server
-- Generates synthetic price updates every 1.5s
-- Random walk within 52-week ranges
-- No external dependencies
-- Perfect for development
-
-### Yahoo Server
 - Fetches real data from Yahoo Finance every 7s
 - Parses embedded JSON from page
-- Graceful fallback on errors
+- Runs on `ws://localhost:8080`
 - **Note**: For demo purposes only. Use licensed API for production.
 
 ## Disclaimer
@@ -174,8 +160,3 @@ Fetching data from third-party sites may violate their Terms of Service. This im
 - Verify stocks are enabled (toggle switch is blue)
 - Check browser console for errors
 - Ensure WebSocket connection is established
-
-**Yahoo mode not working:**
-- Yahoo Finance may have changed their page structure
-- Falls back to mock data with small jitter
-- Consider using mock mode for reliable testing
