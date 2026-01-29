@@ -1,0 +1,46 @@
+<div class="stock-card" [class.disabled]="!quote.enabled">
+  <div class="card-header">
+    <div class="stock-info">
+      <h3 class="symbol">{{ quote.symbol }}</h3>
+      <p class="name">{{ quote.name }}</p>
+    </div>
+    <button 
+      class="toggle-btn"
+      [class.active]="quote.enabled"
+      [attr.aria-pressed]="quote.enabled"
+      (click)="onToggle()"
+      type="button"
+    >
+      <span class="toggle-slider"></span>
+    </button>
+  </div>
+  
+  <div class="card-body">
+    <div class="price-main">
+      <span class="label">Current Price</span>
+      <span class="value">${{ quote.currentPrice.toFixed(2) }}</span>
+    </div>
+    
+    <div class="price-row">
+      <div class="price-item">
+        <span class="label">Day High</span>
+        <span class="value">${{ quote.dayHigh.toFixed(2) }}</span>
+      </div>
+      <div class="price-item">
+        <span class="label">Day Low</span>
+        <span class="value">${{ quote.dayLow.toFixed(2) }}</span>
+      </div>
+    </div>
+    
+    <div class="price-row desktop-only">
+      <div class="price-item">
+        <span class="label">52W High</span>
+        <span class="value">${{ quote.week52High.toFixed(2) }}</span>
+      </div>
+      <div class="price-item">
+        <span class="label">52W Low</span>
+        <span class="value">${{ quote.week52Low.toFixed(2) }}</span>
+      </div>
+    </div>
+  </div>
+</div>

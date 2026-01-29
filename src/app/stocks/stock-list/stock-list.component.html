@@ -1,0 +1,12 @@
+<div class="stock-list-container">
+  <header class="toolbar">
+    <h1>Live Stocks</h1>
+  </header>
+  <div class="stock-grid">
+    <app-stock-card
+      *ngFor="let stock of stocks$ | async; trackBy: trackBySymbol"
+      [quote]="stock"
+      (toggle)="onToggle($event)"
+    ></app-stock-card>
+  </div>
+</div>

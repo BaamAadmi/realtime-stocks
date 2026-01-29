@@ -1,0 +1,63 @@
+.stock-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 8px;
+  background: white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.stock-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.stock-header h3 {
+  margin: 0;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.stock-name {
+  font-size: 0.9em;
+  color: #666;
+}
+
+.stock-price {
+  margin-bottom: 12px;
+}
+
+.current-price {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+.stock-details {
+  margin-bottom: 16px;
+}
+
+.price-range {
+  font-size: 0.9em;
+  color: #666;
+  margin-bottom: 4px;
+}
+
+.stock-actions {
+  text-align: right;
+}
+
+.toggle-btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  background: #007bff;
+  color: white;
+  cursor: pointer;
+}
+
+.toggle-btn:hover {
+  background: #0056b3;
+}
