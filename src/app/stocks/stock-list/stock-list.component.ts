@@ -15,7 +15,7 @@ import { StockCardComponent } from '../stock-card/stock-card.component';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class StockListComponent implements OnInit {
-  private stocksService = inject(StocksService);
+  private readonly stocksService = inject(StocksService);
   stocks$ = this.stocksService.getStocks();
 
   ngOnInit(): void {

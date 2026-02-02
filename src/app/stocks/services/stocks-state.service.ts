@@ -1,7 +1,8 @@
-import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
 import { StockQuote, StockSymbol } from '../models/stock.models';
-import { SUPPORTED_SYMBOLS, MAX_ENABLED_STOCKS } from './symbol-utils';
+import { MAX_ENABLED_STOCKS, SUPPORTED_SYMBOLS } from './symbol-utils';
+
+import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 const STORAGE_KEY = 'stocks_enabled_state';
 

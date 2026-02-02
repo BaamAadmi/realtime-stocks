@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { StockQuote } from '../models/stock.models';
 import { StockCardComponent } from './stock-card.component';
-import { StockQuote } from '../../../core/models/stock.models';
 
 describe('StockCardComponent', () => {
   let component: StockCardComponent;
@@ -20,7 +21,7 @@ describe('StockCardComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [StockCardComponent],
+      imports: [StockCardComponent],
     }).compileComponents();
 
     fixture = TestBed.createComponent(StockCardComponent);

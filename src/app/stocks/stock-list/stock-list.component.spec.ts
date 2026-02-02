@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { of } from 'rxjs';
+import { StockQuote } from '../models/stock.models';
 import { StocksService } from '../services/stocks.service';
 import { StockListComponent } from './stock-list.component';
 
@@ -11,13 +12,13 @@ describe('StockListComponent', () => {
 
   beforeEach(async () => {
     mockStocksService = {
-      initialize: jest.fn(),
+      initialise: jest.fn(),
       getStocks: jest.fn().mockReturnValue(of([])),
       toggleStock: jest.fn(),
     } as unknown as jest.Mocked<StocksService>;
 
     await TestBed.configureTestingModule({
-      declarations: [StockListComponent],
+      imports: [StockListComponent],
       providers: [{ provide: StocksService, useValue: mockStocksService }],
     }).compileComponents();
 
@@ -48,7 +49,7 @@ describe('StockListComponent', () => {
       week52Low: 120,
       lastUpdated: '',
       enabled: true,
-    };
+    } as StockQuote;
     expect(component.trackBySymbol(0, quote)).toBe('AAPL');
   });
 });

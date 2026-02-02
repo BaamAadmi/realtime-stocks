@@ -5,18 +5,18 @@ describe('StocksStateService', () => {
   let service: StocksStateService;
 
   beforeEach(() => {
+    localStorage.clear();
     TestBed.configureTestingModule({
       providers: [StocksStateService],
     });
     service = TestBed.inject(StocksStateService);
-    localStorage.clear();
   });
 
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should initialize with 4 stocks enabled by default', done => {
+  it('should initialise with 4 stocks enabled by default', done => {
     service.stocks$.subscribe(stocks => {
       expect(stocks.length).toBe(4);
       expect(stocks.every(s => s.enabled)).toBe(true);
